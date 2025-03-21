@@ -4,7 +4,7 @@ using namespace std;
 //MIsael Nunez
 // TODO: Step 1 - Define the struct TemperatureRecord
 // It should contain two integer fields: day and temperature.
-
+//oo
 struct TemperatureRecord {
     int day;
     int temperature;
@@ -13,7 +13,7 @@ struct TemperatureRecord {
 const int MAX_DAYS = 31;
 
 // Function Prototypes
-void readTemperatures(? ? ? ); // TODO: Fix the parameters
+void readTemperatures(TemperatureRecord records[], int& size);; // TODO: Fix the parameters
 void printTemperatures(const ? ? ? );
 TemperatureRecord findMin(const ? ? ? );
 TemperatureRecord findMax(const ? ? ? );
@@ -25,7 +25,7 @@ int main() {
     int size = 0;  // Actual number of records read
 
     // TODO: Step 3 - Call readTemperatures() to load data from file
-
+    readTemperatures(records, size);
     // TODO: Step 4 - Print the temperatures
 
     // TODO: Step 5 - Compute and display min, max, and average temperature
@@ -35,7 +35,25 @@ int main() {
 
 // TODO: Step 6 - Implement readTemperatures()
 // Read from "temps.txt" and store data in the array
+void readTemperatures(TemperatureRecord records[], int& size) {
+    ifstream inFile("temps.txt");
 
+    if (!inFile) {
+        cout << "Error opening file." << endl;
+
+    }
+    int day;
+    int temp;
+    size = 0;
+
+    while (inFile >> day >> temp && size < MAX_DAYS) {
+        records[size].day = day;
+        records[size].temperature = temp;
+        size++;
+    }
+    inFile.close();
+
+}
 // TODO: Step 7 - Implement printTemperatures()
 // Print all stored temperatures in a formatted table
 
