@@ -1,6 +1,8 @@
+
 #include <iostream>
 #include <fstream>
 using namespace std;
+// Add this at the top
 //MIsael Nunez
 // TODO: Step 1 - Define the struct TemperatureRecord
 // It should contain two integer fields: day and temperature.
@@ -17,9 +19,10 @@ void readTemperatures(TemperatureRecord records[], int& size); // TODO: Fix the 
 void printTemperatures(const TemperatureRecord records [], int size);
 //TemperatureRecord findMin(const ? ? ? );
 //TemperatureRecord findMax(const ? ? ? );
-//double findAverage(const ? ? ? );
+double findAverage(const TemperatureRecord records[], int size);
 
 int main() {
+   
     // TODO: Step 2 - Declare an array of TemperatureRecord structs (MAX_DAYS size)
     TemperatureRecord records[MAX_DAYS];
     int size = 0;  // Actual number of records read
@@ -32,6 +35,8 @@ int main() {
     printTemperatures(records, size);
 
     // TODO: Step 5 - Compute and display min, max, and average temperature
+    double average = findAverage(records, size);
+    cout << "Average Temperature: " << average << endl;
 
     return 0;
 }
@@ -43,7 +48,7 @@ void readTemperatures(TemperatureRecord records[], int& size) {
 
     if (!inFile) {
         cout << "Error opening file." << endl;
-
+        return;
     }
     int day;
     int temp;
@@ -74,3 +79,14 @@ void printTemperatures(const TemperatureRecord records[], int size) {
 
 // TODO: Step 10 - Implement findAverage()
 // Compute and return the average temperature
+double findAverage(const TemperatureRecord records[], int size) {
+    if (size == 0) {
+        return 0.0;
+
+    }
+    int total = 0;
+    for (int i = 0; i < size; ++i) {
+         total += records[i].temperature;
+     }
+     return static_cast<double>(total) / size;
+}
