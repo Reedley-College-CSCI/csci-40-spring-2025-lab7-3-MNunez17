@@ -33,7 +33,7 @@ int main() {
     cout << "Temperature Records:" << endl;
     cout << "Day   Temp" << endl;
     printTemperatures(records, size);
-
+    //-----
     // TODO: Step 5 - Compute and display min, max, and average temperature
     double average = findAverage(records, size);
     cout << "Average Temperature: " << average << endl;
